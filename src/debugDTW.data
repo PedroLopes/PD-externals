@@ -1,0 +1,372 @@
+xsize 10 ysize 10 params 1
+float_x[0 0] = 0.000000
+float_x[1 0] = 0.000000
+float_x[2 0] = 0.000000
+float_x[3 0] = 0.000000
+float_x[4 0] = 0.100000
+float_x[5 0] = 0.500000
+float_x[6 0] = 1.000000
+float_x[7 0] = 0.500000
+float_x[8 0] = 0.100000
+float_x[9 0] = 0.000000
+float_y[0 0] = 0.000000
+float_y[1 0] = 0.000000
+float_y[2 0] = 0.100000
+float_y[3 0] = 0.100000
+float_y[4 0] = 0.100000
+float_y[5 0] = 0.500000
+float_y[6 0] = 1.000000
+float_y[7 0] = 0.500000
+float_y[8 0] = 0.100000
+float_y[9 0] = 0.100000
+Dist: 0 0 0 0
+Dist: 0 1 0 0
+Dist: 0 2 0 0
+Dist: 0 3 0 0
+Dist: 0 4 0 0
+Dist: 0 5 0 0
+Dist: 0 6 1 1
+Dist: 0 7 0 0
+Dist: 0 8 0 0
+Dist: 0 9 0 0
+Dist: 1 0 0 0
+Dist: 1 1 0 0
+Dist: 1 2 0 0
+Dist: 1 3 0 0
+Dist: 1 4 0 0
+Dist: 1 5 0 0
+Dist: 1 6 1 1
+Dist: 1 7 0 0
+Dist: 1 8 0 0
+Dist: 1 9 0 0
+Dist: 2 0 0 0
+Dist: 2 1 0 0
+Dist: 2 2 0 0
+Dist: 2 3 0 0
+Dist: 2 4 0 0
+Dist: 2 5 0 0
+Dist: 2 6 1 1
+Dist: 2 7 0 0
+Dist: 2 8 0 0
+Dist: 2 9 0 0
+Dist: 3 0 0 0
+Dist: 3 1 0 0
+Dist: 3 2 0 0
+Dist: 3 3 0 0
+Dist: 3 4 0 0
+Dist: 3 5 0 0
+Dist: 3 6 1 1
+Dist: 3 7 0 0
+Dist: 3 8 0 0
+Dist: 3 9 0 0
+Dist: 4 0 0 0
+Dist: 4 1 0 0
+Dist: 4 2 0 0
+Dist: 4 3 0 0
+Dist: 4 4 0 0
+Dist: 4 5 0 0
+Dist: 4 6 1 1
+Dist: 4 7 0 0
+Dist: 4 8 0 0
+Dist: 4 9 0 0
+Dist: 5 0 0 0
+Dist: 5 1 0 0
+Dist: 5 2 0 0
+Dist: 5 3 0 0
+Dist: 5 4 0 0
+Dist: 5 5 0 0
+Dist: 5 6 0 0
+Dist: 5 7 0 0
+Dist: 5 8 0 0
+Dist: 5 9 0 0
+Dist: 6 0 1 1
+Dist: 6 1 1 1
+Dist: 6 2 1 1
+Dist: 6 3 1 1
+Dist: 6 4 1 1
+Dist: 6 5 0 0
+Dist: 6 6 0 0
+Dist: 6 7 0 0
+Dist: 6 8 1 1
+Dist: 6 9 1 1
+Dist: 7 0 0 0
+Dist: 7 1 0 0
+Dist: 7 2 0 0
+Dist: 7 3 0 0
+Dist: 7 4 0 0
+Dist: 7 5 0 0
+Dist: 7 6 0 0
+Dist: 7 7 0 0
+Dist: 7 8 0 0
+Dist: 7 9 0 0
+Dist: 8 0 0 0
+Dist: 8 1 0 0
+Dist: 8 2 0 0
+Dist: 8 3 0 0
+Dist: 8 4 0 0
+Dist: 8 5 0 0
+Dist: 8 6 1 1
+Dist: 8 7 0 0
+Dist: 8 8 0 0
+Dist: 8 9 0 0
+Dist: 9 0 0 0
+Dist: 9 1 0 0
+Dist: 9 2 0 0
+Dist: 9 3 0 0
+Dist: 9 4 0 0
+Dist: 9 5 0 0
+Dist: 9 6 1 1
+Dist: 9 7 0 0
+Dist: 9 8 0 0
+Dist: 9 9 0 0
+globdist[2][2] = 4.94e-324
+globdist[2][2] = 1.00e-02
+move j:2:i:2=2
+globdist[3][2] = 2.00e-02
+move j:3:i:2=3
+globdist[4][2] = 1.00e+30
+move j:4:i:2=2
+globdist[5][2] = 1.00e+30
+move j:5:i:2=2
+globdist[6][2] = 1.00e+30
+move j:6:i:2=2
+globdist[7][2] = 1.00e+30
+move j:7:i:2=2
+globdist[8][2] = 1.00e+30
+move j:8:i:2=2
+globdist[9][2] = 1.00e+30
+move j:9:i:2=2
+globdist[2][3] = 1.98e-323
+globdist[2][3] = 2.00e-02
+move j:2:i:3=1
+globdist[3][3] = 2.00e-02
+move j:3:i:3=2
+globdist[4][3] = 2.00e-02
+move j:4:i:3=3
+globdist[5][3] = 1.80e-01
+move j:5:i:3=3
+globdist[6][3] = 1.00e+30
+move j:6:i:3=2
+globdist[7][3] = 1.00e+30
+move j:7:i:3=2
+globdist[8][3] = 1.00e+30
+move j:8:i:3=2
+globdist[9][3] = 1.00e+30
+move j:9:i:3=2
+globdist[2][4] = 3.80e-311
+globdist[2][4] = 1.00e+30
+move j:2:i:4=2
+globdist[3][4] = 3.00e-02
+move j:3:i:4=2
+globdist[4][4] = 2.00e-02
+move j:4:i:4=2
+globdist[5][4] = 1.80e-01
+move j:5:i:4=3
+globdist[6][4] = 9.90e-01
+move j:6:i:4=3
+globdist[7][4] = 1.15e+00
+move j:7:i:4=3
+globdist[8][4] = 1.00e+30
+move j:8:i:4=2
+globdist[9][4] = 1.00e+30
+move j:9:i:4=2
+globdist[2][5] = 2.33e-306
+globdist[2][5] = 1.00e+30
+move j:2:i:5=2
+globdist[3][5] = 2.80e-01
+move j:3:i:5=1
+globdist[4][5] = 1.80e-01
+move j:4:i:5=1
+globdist[5][5] = 2.00e-02
+move j:5:i:5=2
+globdist[6][5] = 2.70e-01
+move j:6:i:5=3
+globdist[7][5] = 4.30e-01
+move j:7:i:5=3
+globdist[8][5] = 1.15e+00
+move j:8:i:5=3
+globdist[9][5] = 1.56e+00
+move j:9:i:5=3
+globdist[2][6] = 0.00e+00
+globdist[2][6] = 1.00e+30
+move j:2:i:6=2
+globdist[3][6] = 1.00e+30
+move j:3:i:6=2
+globdist[4][6] = 1.00e+00
+move j:4:i:6=1
+globdist[5][6] = 2.70e-01
+move j:5:i:6=1
+globdist[6][6] = 2.00e-02
+move j:6:i:6=2
+globdist[7][6] = 2.70e-01
+move j:7:i:6=3
+globdist[8][6] = 1.24e+00
+move j:8:i:6=2
+globdist[9][6] = 2.15e+00
+move j:9:i:6=2
+globdist[2][7] = 8.44e+15
+globdist[2][7] = 1.00e+30
+move j:2:i:7=2
+globdist[3][7] = 1.00e+30
+move j:3:i:7=2
+globdist[4][7] = 1.25e+00
+move j:4:i:7=1
+globdist[5][7] = 4.30e-01
+move j:5:i:7=1
+globdist[6][7] = 2.70e-01
+move j:6:i:7=1
+globdist[7][7] = 2.00e-02
+move j:7:i:7=2
+globdist[8][7] = 1.80e-01
+move j:8:i:7=3
+globdist[9][7] = 6.80e-01
+move j:9:i:7=3
+globdist[2][8] = 1.01e+16
+globdist[2][8] = 1.00e+30
+move j:2:i:8=2
+globdist[3][8] = 1.00e+30
+move j:3:i:8=2
+globdist[4][8] = 1.00e+30
+move j:4:i:8=2
+globdist[5][8] = 1.16e+00
+move j:5:i:8=1
+globdist[6][8] = 1.24e+00
+move j:6:i:8=2
+globdist[7][8] = 1.80e-01
+move j:7:i:8=1
+globdist[8][8] = 2.00e-02
+move j:8:i:8=2
+globdist[9][8] = 3.00e-02
+move j:9:i:8=3
+globdist[2][9] = 4.94e-324
+globdist[2][9] = 1.00e+30
+move j:2:i:9=2
+globdist[3][9] = 1.00e+30
+move j:3:i:9=2
+globdist[4][9] = 1.00e+30
+move j:4:i:9=2
+globdist[5][9] = 1.57e+00
+move j:5:i:9=1
+globdist[6][9] = 1.97e+00
+move j:6:i:9=2
+globdist[7][9] = 5.90e-01
+move j:7:i:9=1
+globdist[8][9] = 2.00e-02
+move j:8:i:9=1
+globdist[9][9] = 3.00e-02
+move j:9:i:9=2
+[0 0] globdist: 0.00e+00    move: 13264    
+[0 1] globdist: 1.00e+30    move: 122    
+[0 2] globdist: 1.00e+30    move: 13264    
+[0 3] globdist: 1.00e+30    move: 122    
+[0 4] globdist: 1.00e+30    move: 0    
+[0 5] globdist: 1.00e+30    move: 0    
+[0 6] globdist: 1.00e+30    move: 0    
+[0 7] globdist: 1.00e+30    move: 0    
+[0 8] globdist: 1.00e+30    move: 63776    
+[0 9] globdist: 1.00e+30    move: 2161    
+[1 0] globdist: 1.00e+30    move: 13264    
+[1 1] globdist: 0.00e+00    move: 2    
+[1 2] globdist: 1.00e+30    move: 13264    
+[1 3] globdist: 1.00e+30    move: 122    
+[1 4] globdist: 1.00e+30    move: 0    
+[1 5] globdist: 1.00e+30    move: 0    
+[1 6] globdist: 1.00e+30    move: 0    
+[1 7] globdist: 1.00e+30    move: 0    
+[1 8] globdist: 1.00e+30    move: 1    
+[1 9] globdist: 1.00e+30    move: 0    
+[2 0] globdist: 1.00e+30    move: 13264    
+[2 1] globdist: 1.00e+30    move: 122    
+[2 2] globdist: 1.00e-02    move: 2    
+[2 3] globdist: 2.00e-02    move: 1    
+[2 4] globdist: 1.00e+30    move: 2    
+[2 5] globdist: 1.00e+30    move: 2    
+[2 6] globdist: 1.00e+30    move: 2    
+[2 7] globdist: 1.00e+30    move: 2    
+[2 8] globdist: 1.00e+30    move: 2    
+[2 9] globdist: 1.00e+30    move: 2    
+[3 0] globdist: 1.00e+30    move: 13264    
+[3 1] globdist: 1.00e+30    move: 122    
+[3 2] globdist: 2.00e-02    move: 3    
+[3 3] globdist: 2.00e-02    move: 2    
+[3 4] globdist: 3.00e-02    move: 2    
+[3 5] globdist: 2.80e-01    move: 1    
+[3 6] globdist: 1.00e+30    move: 2    
+[3 7] globdist: 1.00e+30    move: 2    
+[3 8] globdist: 1.00e+30    move: 2    
+[3 9] globdist: 1.00e+30    move: 2    
+[4 0] globdist: 1.00e+30    move: 13264    
+[4 1] globdist: 1.00e+30    move: 122    
+[4 2] globdist: 1.00e+30    move: 2    
+[4 3] globdist: 2.00e-02    move: 3    
+[4 4] globdist: 2.00e-02    move: 2    
+[4 5] globdist: 1.80e-01    move: 1    
+[4 6] globdist: 1.00e+00    move: 1    
+[4 7] globdist: 1.25e+00    move: 1    
+[4 8] globdist: 1.00e+30    move: 2    
+[4 9] globdist: 1.00e+30    move: 2    
+[5 0] globdist: 1.00e+30    move: 13264    
+[5 1] globdist: 1.00e+30    move: 122    
+[5 2] globdist: 1.00e+30    move: 2    
+[5 3] globdist: 1.80e-01    move: 3    
+[5 4] globdist: 1.80e-01    move: 3    
+[5 5] globdist: 2.00e-02    move: 2    
+[5 6] globdist: 2.70e-01    move: 1    
+[5 7] globdist: 4.30e-01    move: 1    
+[5 8] globdist: 1.16e+00    move: 1    
+[5 9] globdist: 1.57e+00    move: 1    
+[6 0] globdist: 1.00e+30    move: 13264    
+[6 1] globdist: 1.00e+30    move: 122    
+[6 2] globdist: 1.00e+30    move: 2    
+[6 3] globdist: 1.00e+30    move: 2    
+[6 4] globdist: 9.90e-01    move: 3    
+[6 5] globdist: 2.70e-01    move: 3    
+[6 6] globdist: 2.00e-02    move: 2    
+[6 7] globdist: 2.70e-01    move: 1    
+[6 8] globdist: 1.24e+00    move: 2    
+[6 9] globdist: 1.97e+00    move: 2    
+[7 0] globdist: 1.00e+30    move: 13264    
+[7 1] globdist: 1.00e+30    move: 122    
+[7 2] globdist: 1.00e+30    move: 2    
+[7 3] globdist: 1.00e+30    move: 2    
+[7 4] globdist: 1.15e+00    move: 3    
+[7 5] globdist: 4.30e-01    move: 3    
+[7 6] globdist: 2.70e-01    move: 3    
+[7 7] globdist: 2.00e-02    move: 2    
+[7 8] globdist: 1.80e-01    move: 1    
+[7 9] globdist: 5.90e-01    move: 1    
+[8 0] globdist: 1.00e+30    move: 13264    
+[8 1] globdist: 1.00e+30    move: 122    
+[8 2] globdist: 1.00e+30    move: 2    
+[8 3] globdist: 1.00e+30    move: 2    
+[8 4] globdist: 18 6] globdist: 1.24e+00    move: 2    
+[8 7] globdist: 1.80e-01    move: 3    
+[8 8] globdist: 2.00e-02    move: 2    
+[8 9] globdist: 2.00e-02    move: 1    
+[9 0] globdist: 1.00e+30    move: 0    
+[9 1] globdist: 1.00e+30    move: 0    
+[9 2] globdist: 1.00e+30    move: 2    
+[9 3] globdist: 1.00e+30    move: 2    
+[9 4] globdist: 1.00e+30    move: 2    
+[9 5] globdist: 1.56e+00    move: 3    
+[9 6] globdist: 2.15e+00    move: 2    
+[9 7] globdist: 6.80e-01    move: 3    
+[9 8] globdist: 3.00e-02    move: 3    
+[9 9] globdist: 3.00e-02    move: 2    
+Move 9 9 2
+Move 8 8 2
+Move 7 7 2
+Move 6 6 2
+Move 5 5 2
+Move 4 4 2
+Move 3 3 2
+Move 2 2 2
+Move 1 1 2
+2
+Move 6 6 2
+Move 5 5 2
+Move 4 4 2
+Move 3 3 2
+Move 2 2 2
+Move 1 1 2
+2

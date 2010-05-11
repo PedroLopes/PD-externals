@@ -1,0 +1,51 @@
+#N canvas 453 72 802 532 10;
+#X text 24 5 arraysize returns the size of an array when banged.;
+#X floatatom 22 163 5 0 0 0 - - -;
+#X msg 22 48 bang;
+#X obj 22 139 arraysize;
+#X msg 69 88 list 1 2.2 2;
+#X text 210 40 read a text file;
+#X text 408 114 write a text file;
+#X obj 214 134 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 214 153 savepanel;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array testOUT 10 float 0;
+#X coords 0 1.5 9 -1.5 200 200 1;
+#X restore 413 232 graph;
+#X msg 203 60 \; testIN read pdfileIN.txt;
+#X msg 65 112 set testIN;
+#X msg 214 176 \; testIN write \$1;
+#X text 420 41 read a text file;
+#X obj 410 138 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 410 157 savepanel;
+#X text 211 111 write a text file;
+#X msg 410 180 \; testOUT write \$1;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array testIN 10 float 0;
+#X coords 0 1.5 9 -1.5 200 200 1;
+#X restore 192 230 graph;
+#X msg 413 61 \; testOUT read pdfileOUT.txt;
+#X obj 227 458 tabdump2 testIN;
+#X obj 227 489 print;
+#X obj 227 435 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 417 490 print;
+#X obj 417 436 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 417 459 tabdump2 testOUT;
+#X msg 77 60 size 1;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 0;
+#X connect 11 0 3 0;
+#X connect 14 0 15 0;
+#X connect 15 0 17 0;
+#X connect 20 0 21 0;
+#X connect 22 0 20 0;
+#X connect 24 0 25 0;
+#X connect 25 0 23 0;
+#X connect 26 0 3 0;

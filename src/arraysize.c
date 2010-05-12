@@ -23,8 +23,20 @@ The array size inlets are based on the arraysize code available on puredata/SVN 
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 #define VERY_BIG  (1e30)
+
+
+char* filestr1 = "myarray0.data";
+char* filestr2 = "myarray2.data";
+
+clock_t c1;
+clock_t c2;
+
+time_t start,end;
+
 
 //---------------------------------------
 
@@ -52,6 +64,12 @@ void arraysize_size(t_arraysize *x, t_float *s)
 
 void arraysize_bang(t_arraysize *pdx)
 {
+
+double dif;
+
+c1=clock();
+time(&start);
+
   //t_garray *garray;
 double **globdist;
 double **Dist;
@@ -76,15 +94,15 @@ FILE *file1, *file2, *glob, *debug_file, *output_file;
 
  /* open x-parameter file */
 
-if ((file1=fopen("in1","rb"))==NULL)
-{fprintf(stderr,"File %s cannot be opened\n","in1");
+if ((file1=fopen(filestr1,"rb"))==NULL)
+{fprintf(stderr,"File %s cannot be opened\n",filestr1);
 exit(1);
 }
 
 /* open y-parameter file */
 
-if ((file2=fopen("in2","rb"))==NULL)
-{fprintf(stderr,"File %s cannot be opened\n","in2");
+if ((file2=fopen(filestr2,"rb"))==NULL)
+{fprintf(stderr,"File %s cannot be opened\n",filestr2);
 exit(1);
 }
 
@@ -167,12 +185,15 @@ for (i=0; i < xsize; i++)
   for (k=0; k < params; k++)
     {
 if (feof(file1))
-  {fprintf(stderr,"Premature EOF in %s\n","in1");
+  {fprintf(stderr,"Premature EOF in %s\n",filestr1);
   exit(1);
   }
 
-  fscanf(file1,"%f ",&x[i][k]);
+  int retf = fscanf(file1,"%f ",&x[i][k]);
   post("value1:%f",x[i][k]);
+  if (retf == -1)
+  	post("scan error");
+  
 
 if (debug == 1)
   fprintf(debug_file,"float_x[%d %d] = %f\n",i,k,x[i][k]);
@@ -187,11 +208,12 @@ for (i=0; i < ysize; i++)
     {
 
 if (feof(file2))
-  {fprintf(stderr,"Premature EOF in %s\n","in2");
+  {fprintf(stderr,"Premature EOF in %s\n",filestr2);
   exit(1);
   }
 
-fscanf(file2,"%f ",&y[i][k]);
+int retf= fscanf(file2,"%f ",&y[i][k]);
+if (retf == -1) post("scan error");
 post("value2:%f",x[i][k]);
 
  if (debug == 1)
@@ -199,7 +221,7 @@ post("value2:%f",x[i][k]);
     }
 }
 
-post(stdout,"Computing distance matrix ...\n");
+post("Computing distance matrix ...\n");
 
 //current
 
@@ -219,7 +241,7 @@ for(i=0;i<xsize;i++) {
   }
 }
 
-post(stdout,"Warping in progress ...\n");
+post("Warping in progress ...\n");
 
 /*% for first frame, only possible match is at (0,0)*/
 
@@ -334,14 +356,23 @@ for (i=0;i<=n;i++) {
 
 }
 
-post(stdout,"Warping complete. Writing output file.\n");
+post("Warping complete. Writing output file.\n");
 
 //current2
 
 post("%f\n",globdist[xsize-1][ysize-1]);
-fprintf(stdout,"%s     %s     %.3f\n","in1","in2",globdist[xsize-1][ysize-1]);
+fprintf(stdout,"%s     %s     %.3f\n",filestr1,filestr2,globdist[xsize-1][ysize-1]);
 
  outlet_float(pdx->x_obj.ob_outlet, globdist[xsize-1][ysize-1]);
+
+c2 = clock();
+time(&end);
+
+
+post("timecpu:%d", (c2-c1)/CLOCKS_PER_SEC);
+
+dif = difftime (end,start);
+post("Took %.2lf seconds in diff mode", dif );
 
 
 //end of func

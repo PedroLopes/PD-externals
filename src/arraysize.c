@@ -24,13 +24,16 @@ The array size inlets are based on the arraysize code available on puredata/SVN 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+
 
 
 #define VERY_BIG  (1e30)
 
+//ENUM template_num {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGTH}
 
-char* filestr1 = "myarray0.data";
-char* filestr2 = "myarray2.data";
+
+
 
 clock_t c1;
 clock_t c2;
@@ -48,9 +51,53 @@ typedef struct _arraysize {
   int size;
 } t_arraysize;
 
-void arraysize_set(t_arraysize *x, t_symbol *s)
+
+
+// our struct
+
+typedef struct gesture {
+  char templatename[9];
+  char* gesturename;
+  float threshold;
+} t_gesture;
+
+
+
+ void arraysize_set(t_arraysize *x, t_symbol *s, int array_num)
+ {
+//   t_garray *garray;
+//   printf("nha0");
+// 
+//   x->array_name = s;
+// 
+// if (array_num == 1)
+//   input = s->s_name;
+// else 
+//   template = s->s_name;
+// 
+// 
+//   post("strname:%s", input);
+//   post("strname:%s", template);
+//   printf("nha1");
+// 
+//   if(!(garray = (t_garray *)pd_findbyclass(x->array_name,garray_class))) {
+//     pd_error(x, "%s: no such table", x->array_name->s_name);
+//   } else {
+//     //outlet_float(x->x_obj.ob_outlet, garray_npoints(garray));
+//     post("SIZE: %d", garray_npoints(garray));
+//   }
+// 
+ }
+
+void setarray1(t_arraysize *x, t_symbol *s) 
 {
-  x->array_name = s;
+  post("calling1");
+  arraysize_set(x, s, 1);
+}
+void setarray2(t_arraysize *x, t_symbol *s) 
+{
+  post("calling2");
+  arraysize_set(x, s, 2);
 }
 
 void arraysize_size(t_arraysize *x, t_float *s)
@@ -79,32 +126,156 @@ unsigned short int **move;
 unsigned short int **warp;
 unsigned short int **temp;
 
+float **x, **y;
+
 unsigned int I, X, Y, n, i, j, k;
 //array size is not working in this version (should be fixed soon)
-unsigned int xsize = 10;
-unsigned int ysize = 10;
+unsigned int xsize;
+unsigned int ysize;
 //params is bound to 1 for now
 unsigned int params = 1;
-
 unsigned int debug; /* debug flag */
 
-float **x, **y; /*now 2 dimensional*/
-
+//new stuff
 FILE *file1, *file2, *glob, *debug_file, *output_file;
+char* input = "input";
+char template[10] = {'t', 'e','m','p','l','a','t','e','3','\0'}; 
+int num_templates = 8;
+char c;
+int f = 1;
+t_gesture* gestures[num_templates];
 
- /* open x-parameter file */
+float diffs[num_templates];
 
-if ((file1=fopen(filestr1,"rb"))==NULL)
-{fprintf(stderr,"File %s cannot be opened\n",filestr1);
+int p;
+for (p = 0; p < num_templates; p++)
+  diffs[p]=VERY_BIG;
+
+
+
+
+ /* open INPUT-parameter file */
+
+if ((file1=fopen(input,"rb"))==NULL)
+{fprintf(stderr,"File %s cannot be opened\n",input);
 exit(1);
 }
 
-/* open y-parameter file */
+{//-------HARDCODED TEMPLATES
 
-if ((file2=fopen(filestr2,"rb"))==NULL)
-{fprintf(stderr,"File %s cannot be opened\n",filestr2);
-exit(1);
+t_gesture *temp1 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp2 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp3 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp4 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp5 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp6 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp7 = (t_gesture*) malloc(sizeof(t_gesture));
+t_gesture *temp8 = (t_gesture*) malloc(sizeof(t_gesture));
+ 	
+  memcpy(temp1->templatename, "template1", strlen("template1")+1);
+  temp1->gesturename = "kick1";
+  temp1->threshold = 1.5;
+  
+  gestures[0]=temp1;
+  
+  memcpy(temp2->templatename, "template2", strlen("template2")+1);
+  temp2->gesturename = "kick2";
+  temp2->threshold = 0.8;
+  
+  gestures[1]=temp2;
+  
+  memcpy(temp3->templatename, "template3", strlen("template3")+1);
+  temp3->gesturename = "kick3";
+  temp3->threshold = 0.7;
+  
+  gestures[2]=temp3;
+  
+  memcpy(temp4->templatename, "template4", strlen("template4")+1);
+  temp4->gesturename = "kick4";
+  temp4->threshold = 1.7;
+  
+  gestures[3]=temp4;
+  
+  memcpy(temp5->templatename, "template5", strlen("template5")+1);
+  temp5->gesturename = "drag1";
+  temp5->threshold = 5.0;
+  
+  gestures[4]=temp5;
+  
+  memcpy(temp6->templatename, "template6", strlen("template6")+1);
+  temp6->gesturename = "drag2";
+  temp6->threshold = 5.0;
+  
+  gestures[5]=temp6;
+  
+  memcpy(temp7->templatename, "template7", strlen("template7")+1);
+  temp7->gesturename = "drag3";
+  temp7->threshold = 5.0;
+  
+  gestures[6]=temp7;
+  
+  memcpy(temp8->templatename, "template8", strlen("template8")+1);
+  temp8->gesturename = "drag4";
+  temp8->threshold = 5.0;
+  
+  gestures[7]=temp8;
+  
+}//-------HARDCODED TEMPLATES  
+
+/*while (f <= num_templates)
+{
+  t_gesture *temp = (t_gesture*) malloc(sizeof(t_gesture));
+  
+  //build name
+	c = f + '0';
+	template[8] = c;
+
+  memcpy(temp->templatename,template,strlen(template)+1);
+  temp->gesturename = "kick";
+  temp->threshold = 0.7;
+  
+  gestures[f-1]=temp;
+  
+  f++;
 }
+f=1;*/
+
+while (f <= num_templates)
+{
+  
+  fprintf(stderr,"\n%s\n", gestures[f-1]->templatename);
+  
+  f++;
+}
+f=1;
+
+while (f <= num_templates)
+{
+  t_gesture *target = gestures[f-1];
+  
+  xsize = 100;
+  ysize = 100;
+    
+  
+  fseek(file1,0,SEEK_SET);
+
+ /* apgar
+	fprintf(stderr, "nha:%s\n", template); 
+	c = f + '0';
+	fprintf(stderr, "teste:%c\n", c); 
+	template[8] = c;
+	fprintf(stderr, "obj:%s\n", template); 
+	/* open TEMPLATE-parameter file */
+
+	
+post("START---------------%s--------------",target->templatename);
+	
+if ((file2=fopen(target->templatename,"rb"))==NULL)
+{fprintf(stderr,"File %s cannot be opened\n",target->templatename);
+//exit(1);
+}
+
+fseek(file2,0,SEEK_SET);
 
 
 printf("xsize:%d,ysize:%d,params:%d\n",xsize,ysize,params);
@@ -115,8 +286,10 @@ printf("xsize:%d,ysize:%d,params:%d\n",xsize,ysize,params);
        }
 
      debug = 1;
+  
 
-
+  
+     
 if (debug==1) fprintf(debug_file,"xsize %d ysize %d params %d\n",xsize,ysize,params);
 
 /* allocate memory for x and y matrices */
@@ -127,7 +300,7 @@ if ((x = malloc(xsize * sizeof(float *))) == NULL)
 for (i=0; i < xsize; i++)
      if ((x[i] = malloc(params * sizeof(float))) == NULL)
      fprintf(stderr,"Memory allocation error (x)\n");
-
+  
 if ((y = malloc(ysize * sizeof(float *))) == NULL)
      fprintf(stderr,"Memory allocation error (y)\n");
 
@@ -180,17 +353,19 @@ for (i=0; i < xsize*2; i++)
 if ((warp[i] = malloc(2 * sizeof(short))) == NULL)
      fprintf(stderr,"Memory allocation error (warp)\n");
 
+
+//read input
 for (i=0; i < xsize; i++)
 {
   for (k=0; k < params; k++)
     {
 if (feof(file1))
-  {fprintf(stderr,"Premature EOF in %s\n",filestr1);
+  {fprintf(stderr,"Premature EOF in %s\n",input);
   exit(1);
   }
 
   int retf = fscanf(file1,"%f ",&x[i][k]);
-  post("value1:%f",x[i][k]);
+  //post("value1-m:%f",x[i][k]);
   if (retf == -1)
   	post("scan error");
   
@@ -200,7 +375,7 @@ if (debug == 1)
     }
 }
 
-/*read y parameter in y[]*/
+/*read y=template parameter in y[]*/
 
 for (i=0; i < ysize; i++)
 {
@@ -208,13 +383,13 @@ for (i=0; i < ysize; i++)
     {
 
 if (feof(file2))
-  {fprintf(stderr,"Premature EOF in %s\n",filestr2);
+  {fprintf(stderr,"Premature EOF in %s\n",template);
   exit(1);
   }
 
 int retf= fscanf(file2,"%f ",&y[i][k]);
 if (retf == -1) post("scan error");
-post("value2:%f",x[i][k]);
+//post("value2:%f",x[i][k]);
 
  if (debug == 1)
    fprintf(debug_file,"float_y[%d %d] = %f\n",i,k,y[i][k]);
@@ -361,7 +536,7 @@ post("Warping complete. Writing output file.\n");
 //current2
 
 post("%f\n",globdist[xsize-1][ysize-1]);
-fprintf(stdout,"%s     %s     %.3f\n",filestr1,filestr2,globdist[xsize-1][ysize-1]);
+fprintf(stdout,"%s     %s     %.3f\n",input,template,globdist[xsize-1][ysize-1]);
 
  outlet_float(pdx->x_obj.ob_outlet, globdist[xsize-1][ysize-1]);
 
@@ -374,6 +549,51 @@ post("timecpu:%d", (c2-c1)/CLOCKS_PER_SEC);
 dif = difftime (end,start);
 post("Took %.2lf seconds in diff mode", dif );
 
+f++;
+
+
+//target->templatename
+if (globdist[xsize-1][ysize-1] <= target->threshold)
+{
+  //Identified gesture under threshold
+  post("Found gesture: %s, in %s with value %f under threshold %f", target->gesturename, target->templatename, globdist[xsize-1][ysize-1], target->threshold);
+  fprintf(stderr,"Found gesture: %s, in %s with value %f under threshold %f\n", target->gesturename, target->templatename, globdist[xsize-1][ysize-1], target->threshold);
+  
+  diffs[f-1]=abs(globdist[xsize-1][ysize-1] - target->threshold);
+  
+}  
+else 
+{
+ post("Did not match current gesture, reiterate."); 
+ fprintf(stderr,"Did not match current gesture, reiterate.\n"); 
+} 
+
+
+post("END---------------%s--------------",target->templatename);
+}
+
+float min=VERY_BIG;
+t_gesture* t_min;
+//Let's analyze the data!
+for (p = 0; p < num_templates; p++)
+{
+  if (diffs[p] < min)
+  {
+    t_min = gestures[p];
+    min = diffs[p];
+  }
+}
+
+if (min == VERY_BIG)
+{
+  post("======================");
+  post("Gesture not found in DB");
+}
+else
+{
+ post("======================");
+  post("Best gesture is %s", t_min->gesturename);
+}
 
 //end of func
 } 
@@ -422,7 +642,8 @@ void arraysize_setup(void)
 {
   arraysize_class = class_new(gensym("arraysize"), (t_newmethod)arraysize_new, 0, sizeof(t_arraysize), CLASS_DEFAULT, A_DEFSYMBOL, 0);
   
-  class_addmethod(arraysize_class,(t_method)arraysize_set,gensym("set"), A_DEFSYMBOL, 0);
+  class_addmethod(arraysize_class,(t_method)setarray1,gensym("set1"), A_DEFSYMBOL, 0);
+  class_addmethod(arraysize_class,(t_method)setarray2,gensym("set2"), A_DEFSYMBOL, 0);
   class_addbang(arraysize_class,arraysize_bang);
   class_addlist(arraysize_class, my_list_method);
   class_addmethod(arraysize_class,(t_method)arraysize_size,gensym("size"), A_FLOAT, 0);

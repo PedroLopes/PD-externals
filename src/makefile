@@ -5,8 +5,8 @@ I =  -I../../../bin/pd/src
 all: linux
 
 linux:
-	cc -DPD -O2 -DUNIX $(I) -o arraysize.o -c arraysize.c
-	ld -shared --export-dynamic -o arraysize.pd_linux arraysize.o
+	cc -DPD -O2 -DUNIX $(I) -o dtw.o -c dtw.c
+	ld -shared --export-dynamic -o dtw.pd_linux dtw.o
 
 nt:
-	cl arraysize.c /DNT /DPD /LD /Gd /GD /Ox /link /export:arraysize_setup \system\pd\bin\pd.lib
+	cl dtw.c /DNT /DPD /LD /Gd /GD /Ox /link /export:dtw_setup \system\pd\bin\pd.lib

@@ -1,3 +1,5 @@
 PD-externals repository
 
-***DTW*** dynamic time warping external, allows for matching two times series with each other (work in progress, done in 2011, getting picked up again in '14)
+DTW: dynamic time warping external, allows for matching two times series with each other 
+
+(work in progress, done in 2011, getting picked up again in '14)
